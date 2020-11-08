@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 class VoiceUtils {
   constructor (client) {
     this.client = client
+    this.category = new Discord.Collection()
     this.channels = new Discord.Collection()
     this.destroyTimer = new Discord.Collection()
     this.destroyTimeout = 600000
@@ -25,10 +26,11 @@ class VoiceUtils {
     }
     try {
       await message.react(this.client.utils.constructors.EMOJI_SANDCLOCK)
+      const parentId = this.category.get(message.guild.id)
       const result = await message.guild.channels.create(`${message.author.username}의 파티장`, {
         type: 'voice',
         userLimit,
-        parent: null,
+        parent: parentId ? parentId.categoryId : null,
         permissionOverwrites: roleOrMembers
           ? [
             {
@@ -56,6 +58,7 @@ class VoiceUtils {
         guildId: message.guild.id,
         tchId: message.channel.id,
         vchId: result.id,
+        parentId: parentId ? parentId.categoryId : null,
         author: message.author.id,
         members: [],
         roles: [],

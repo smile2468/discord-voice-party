@@ -1,7 +1,7 @@
 module.exports = {
   bot: {
     owner: ['USER_ID_1', 'USER_ID_2', 'USER_ID_3'], // 관리자 추가 (Administrator | BotOwner)
-    prefix: '!',
+    prefix: 'PREFIX',
     inviteLink: 'https://discordapp.com/oauth2/authorize?&client_id=%clientID%&scope=bot&permissions=8',
     token: 'BOT_TOKEN'
   },
