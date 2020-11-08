@@ -6,7 +6,7 @@ class Command extends BaseCommand {
       client,
       '카테고리설정',
       ['setcategory', 'zkxprhfltjfwjd', 'ㄴㄷㅅㅊㅁㅅㄷ해교'],
-      'Administrator',
+      'ADMINISTRATOR',
       ['Administrator'],
       '<카테고리>',
       '음성 채널이 생성될 카테고리를 설정합니다.',

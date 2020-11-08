@@ -19,15 +19,17 @@ class Command extends BaseCommand {
     const { message, args } = compressed
     const command = args[0]
     const categories = {
-      List: ['GENERAL', 'VOICE', 'BotOwner'],
+      List: ['GENERAL', 'VOICE', 'ADMINISTRATOR', 'BotOwner'],
       Convert: (emoji = false) => {
         return emoji ? {
           GENERAL: `${this.client.utils.constructors.EMOJI_PERSON} 일반`,
           VOICE: `${this.client.utils.constructors.EMOJI_MUSIC} 음성`,
+          ADMINISTRATOR: `${this.client.utils.constructors.EMOJI_COP} 관리자`,
           BotOwner: `${this.client.utils.constructors.EMOJI_HAMMER} 개발자`
         } : {
           GENERAL: '일반',
           VOICE: '음성',
+          ADMINISTRATOR: '관리자',
           BotOwner: '개발자'
         }
       }
