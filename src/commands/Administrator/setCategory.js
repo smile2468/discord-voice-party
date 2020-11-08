@@ -19,6 +19,7 @@ class Command extends BaseCommand {
     const { message, args } = compressed
     const category = args[0]
     if (!category) return message.channel.send(this.argumentNotProvided())
+    if (isNaN(category)) return message.channel.send(`> ${this.client.utils.constructors.EMOJI_NO} 카테고리 아이디는 **오로지 숫자**만 가능합니다!`)
     if (category === '없음') {
       const getCategory = this.client.voiceUtils.category.get(message.guild.id)
       getCategory.categoryId = null
