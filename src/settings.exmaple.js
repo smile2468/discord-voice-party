@@ -5,6 +5,9 @@ module.exports = {
     inviteLink: 'https://discordapp.com/oauth2/authorize?&client_id=%clientID%&scope=bot&permissions=8',
     token: 'BOT_TOKEN'
   },
+  koreanbots: {
+    token: 'KoreanBots Token'
+  },
   logger: {
     level: 'debug'
   },

@@ -1,6 +1,7 @@
 const { Client, Collection, Intents } = require('discord.js')
 const path = require('path')
 const Utils = require('../utils')
+const { MyBot } = require('koreanbots')
 
 class BaseClient extends Client {
   constructor (options) {
@@ -22,12 +23,17 @@ class BaseClient extends Client {
     this.globAsync = require('util').promisify(require('glob'))
     this.wait = require('util').promisify(setTimeout)
 
+    this.Bot = null
+    this.updateInterval = null
+
     this.debug = process.argv[2] === '--debug'
 
     this.models_loaded = false
     this.commands_loaded = false
     this.events_loaded = false
     this.initialized = false
+
+    this.shutting_down = false
   }
 
   async init () {
@@ -35,6 +41,12 @@ class BaseClient extends Client {
     await this.loadEvents()
     await this.loadCommands()
     await this.login(this._options.bot.token)
+
+    if (this._options.koreanbots.token && this.shard.ids[0] === 0) {
+      this.Bot = new MyBot(this._options.koreanbots.token, {
+        clientID: this.user.id
+      })
+    }
   }
 
   async loadEvents (reload = false) {
@@ -106,6 +118,15 @@ class BaseClient extends Client {
   }
 
   getRam () { return `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB` }
+
+  shutdown () {
+    this.shutting_down = true
+    this.voiceUtils.clearChannels().then(() => {
+      this.client.logger.warn('[Shutdown] Shutting Down in 10 Seconds...')
+      setTimeout(() => process.exit(0), 10000)
+    })
+    return this.shard ? this.shard.ids : 0
+  }
 }
 
 new BaseClient(require('../settings')).init()

@@ -144,6 +144,13 @@ class VoiceUtils {
     }
   }
 
+  async clearChannels () {
+    for (const data of this.channels.array()) {
+      this.client.logger.info(`[voiceUtils:clearChanneks] Removing Channel... (${data.guildId}-${data.vchId})`)
+      await this.removeVoiceChannel(data)
+    }
+  }
+
   getFormatter (...args) { return args.join('-') }
 }
 

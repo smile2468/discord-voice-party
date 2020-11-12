@@ -41,6 +41,7 @@ module.exports = {
   EMOJI_GAME: '🎮',
   EMOJI_CALLING: '📲',
   EMOJI_ENVELOPE: '📩',
+  EMOJI_MAILBOX: '📫',
   EMOJI_SLEEP: '💤',
   EMOJI_SUN: '☀',
   EMOJI_MOON: '🌙',

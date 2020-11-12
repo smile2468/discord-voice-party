@@ -26,10 +26,10 @@ function setUpEvents (shard) {
   shard.on('error', (error) => {
     Logger.error(`[Shard ${shard.id}] ${error}`)
   })
-  shard.on('reconnecting', () => Logger.warn(`[Shard ${shard.id}] Shard reconnecting`))
-  shard.on('spawn', () => Logger.info(`[Shard ${shard.id}] Shard spawned`))
-  shard.on('death', () => Logger.warn(`[Shard ${shard.id}] Shard death`))
-  shard.on('disconnect', () => Logger.warn(`[Shard ${shard.id}] Shard disconnected`))
+  shard.on('reconnecting', () => Logger.warn(`[Shard ${shard.id}] Shard Reconnecting...`))
+  shard.on('spawn', () => Logger.info(`[Shard ${shard.id}] Shard Spawned!`))
+  shard.on('death', () => Logger.warn(`[Shard ${shard.id}] Shard Death!`))
+  shard.on('disconnect', () => Logger.warn(`[Shard ${shard.id}] Shard Disconnected!`))
 }
 
 module.exports = sharder
