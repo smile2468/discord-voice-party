@@ -1,6 +1,21 @@
 # discord-voice-party
 디스코드에서 자신만의 음성 채널을 만들어봐요!
 
+Download Code
+```sh
+git clone https://github.com/smile2468/discord-voice-party.git
+```
+
+Download to modules
+```sh
+npm install or yarn install
+```
+
+Start Bot
+```sh
+node init
+```
+
 디스코드에서 자신만의 통화방을!
 
 통화방을 생성하여 여러분들만의 통화방을 직접 만들어보세요.
