@@ -6,7 +6,7 @@ Download Code
 git clone https://github.com/smile2468/discord-voice-party.git
 ```
 
-Download to modules
+Download module
 ```sh
 npm install or yarn install
 ```
